@@ -94,6 +94,7 @@ module Elasticsearch
 
         @transport       = arguments[:transport] || begin
           if transport_class == Transport::HTTP::Faraday
+            byebug
             transport_class.new(:hosts => __extract_hosts(hosts, arguments), :options => arguments) do |faraday|
               faraday.adapter(arguments[:adapter] || __auto_detect_adapter)
             end
